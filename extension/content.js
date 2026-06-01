@@ -69,9 +69,11 @@
     return el;
   }
 
-  const selStyle = document.createElement('style');
-  selStyle.textContent = '* { user-select: text !important; -webkit-user-select: text !important; }';
-  document.head.appendChild(selStyle);
+  try {
+    const selStyle = document.createElement('style');
+    selStyle.textContent = '* { user-select: text !important; -webkit-user-select: text !important; }';
+    (document.head || document.documentElement).appendChild(selStyle);
+  } catch (e) {}
 
   function enableTextSelectionRecursive(doc) {
     if (!doc) return;
