@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetMate - AI-Powered Chrome Extension for NetAcad Exams</title>
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <img src="/logo.svg" alt="NetMate Logo" class="logo-img">
+        <span class="logo-text">NetMate</span>
+      </div>
+      <div class="nav-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#undetectable">Undetectable</a>
+        <a href="#pricing">Pricing</a>
+        <a href="https://chromewebstore.google.com/detail/netmate/pifapfmbofjgaenkhhipjhfacfmmhkcp" class="chrome-link" target="_blank">Chrome Extension</a>
+      </div>
+      <div class="nav-actions">
+        <a href="/login" class="btn btn-outline">Try Now</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1>Instant Invisible Homework Help <span class="highlight">In Person, With Screenshare, Wherever You Need It</span></h1>
+        <a href="/login" class="btn btn-primary btn-lg">Get Started Now</a>
+        <div class="hero-badges">
+          <span>Satisfaction Guaranteed</span>
+          <span class="divider">|</span>
+          <span>Cancel Anytime</span>
+          <span class="divider">|</span>
+          <span>24/7 Support</span>
+        </div>
+      </div>
+      <div class="hero-demo">
+        <img src="/hero-demo.svg" alt="NetMate Demo" class="demo-gif">
+      </div>
+    </div>
+  </section>
+
+  <section class="platforms">
+    <div class="container">
+      <p class="platforms-label">Works On:</p>
+      <div class="platform-logos">
+        <img src="/netacad.svg" alt="NetAcad" class="platform-logo">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 24'%3E%3Crect width='80' height='24' rx='4' fill='%231a1a24'/%3E%3Ctext x='8' y='16' font-size='11' fill='%238888a0' font-family='Inter' font-weight='700'%3ECanvas%3C/text%3E%3C/svg%3E" alt="Canvas" class="platform-logo">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 24'%3E%3Crect width='100' height='24' rx='4' fill='%231a1a24'/%3E%3Ctext x='8' y='16' font-size='10' fill='%238888a0' font-family='Inter' font-weight='700'%3EBlackboard%3C/text%3E%3C/svg%3E" alt="Blackboard" class="platform-logo">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 110 24'%3E%3Crect width='110' height='24' rx='4' fill='%231a1a24'/%3E%3Ctext x='8' y='16' font-size='10' fill='%238888a0' font-family='Inter' font-weight='700'%3EBrightspace%3C/text%3E%3C/svg%3E" alt="Brightspace" class="platform-logo">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 24'%3E%3Crect width='100' height='24' rx='4' fill='%231a1a24'/%3E%3Ctext x='8' y='16' font-size='10' fill='%238888a0' font-family='Inter' font-weight='700'%3EMcGraw Hill%3C/text%3E%3C/svg%3E" alt="McGraw Hill" class="platform-logo">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 24'%3E%3Crect width='80' height='24' rx='4' fill='%231a1a24'/%3E%3Ctext x='8' y='16' font-size='11' fill='%238888a0' font-family='Inter' font-weight='700'%3EMoodle%3C/text%3E%3C/svg%3E" alt="Moodle" class="platform-logo">
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="features">
+    <div class="container">
+      <h2 class="section-title">Ace Every Question</h2>
+      <p class="section-subtitle">NetMate scores 98% on average for every type of question</p>
+      <div class="question-grid">
+        <div class="question-card" onclick="showAnswer(this)">
+          <div class="card-badge">Multiple Choice</div>
+          <p class="question-text">What is the derivative of (x + 1)² with respect to x?</p>
+          <div class="options">
+            <div class="option">A. 2x² + 4x - 2</div>
+            <div class="option correct">B. x² + 2x + 1</div>
+            <div class="option">C. 2x + 2</div>
+            <div class="option">D. 2x² - 4x + 2</div>
+          </div>
+          <div class="card-hint">Double Click Me</div>
+        </div>
+        <div class="question-card" onclick="showAnswer(this)">
+          <div class="card-badge">Multiple Select</div>
+          <p class="question-text">Which organelles are involved in protein synthesis?</p>
+          <div class="options">
+            <div class="option">A. Nucleus</div>
+            <div class="option">B. Mitochondria</div>
+            <div class="option correct">C. Ribosomes</div>
+            <div class="option">D. Cell wall</div>
+          </div>
+          <div class="card-hint">Double Click Me</div>
+        </div>
+        <div class="question-card" onclick="showAnswer(this)">
+          <div class="card-badge">Fill in the Blank</div>
+          <p class="question-text">The OSI model layer responsible for routing packets is Layer <span class="blank">______</span></p>
+          <div class="answer-reveal">3 (Network Layer)</div>
+          <div class="card-hint">Double Click Me</div>
+        </div>
+        <div class="question-card" onclick="showAnswer(this)">
+          <div class="card-badge">Matching</div>
+          <p class="question-text">Match each protocol with its port number:</p>
+          <div class="matching">
+            <div class="match-row"><span>HTTP:</span> <span class="match-answer">80</span></div>
+            <div class="match-row"><span>HTTPS:</span> <span class="match-answer">443</span></div>
+            <div class="match-row"><span>FTP:</span> <span class="match-answer">21</span></div>
+            <div class="match-row"><span>SSH:</span> <span class="match-answer">22</span></div>
+          </div>
+          <div class="card-hint">Double Click Me</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="undetectable" class="undetectable">
+    <div class="container">
+      <h2 class="section-title">100% Undetectable</h2>
+      <p class="section-subtitle">NetMate is completely invisible over screenshare and in person</p>
+      <div class="modes-grid">
+        <div class="mode-card active" onclick="switchMode('invisible', this)">
+          <div class="mode-icon">👁️</div>
+          <h3>Invisible Mode</h3>
+          <p>Completely invisible, even over screenshare.</p>
+        </div>
+        <div class="mode-card" onclick="switchMode('sneaky', this)">
+          <div class="mode-icon">🕵️</div>
+          <h3>Sneaky Mode</h3>
+          <p>A small loading indicator for in person exams.</p>
+        </div>
+        <div class="mode-card" onclick="switchMode('homework', this)">
+          <div class="mode-icon">📚</div>
+          <h3>Homework Mode</h3>
+          <p>On screen loading for when you're doing homework.</p>
+        </div>
+      </div>
+      <div class="mode-demo">
+        <img src="/hero-demo.svg" alt="Invisible Mode Demo" id="mode-demo-img">
+      </div>
+      <div class="cta-section">
+        <h2>Ready To Secure Your 4.0?</h2>
+        <a href="/login" class="btn btn-primary btn-lg">Get Started Now</a>
+        <p class="cta-sub">Satisfaction Guarantee &bull; Cancel Anytime</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            Is NetMate really undetectable?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            Yes! NetMate has zero visual footprint, doesn't interfere with browser tabs, and operates entirely in the background.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            What types of questions can NetMate answer?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            NetMate handles multiple choice, multiple select, fill-in-the-blank, matching, drag-and-drop, essays, and more.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            How fast is NetMate?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            Answers appear within 2-5 seconds after double-clicking a question.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            What platforms can I use NetMate on?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            NetMate works on NetAcad, Canvas, Blackboard, Moodle, D2L Brightspace, Schoology, and many more.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            Is my data secure?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            All traffic is routed through secure proxies. We never store your personal information or academic data.
+          </div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            How do I get started?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            Install the Chrome extension, create an account, and you're ready to go. Double-click any question to get an answer.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="/logo.svg" alt="NetMate Logo" class="logo-img">
+        <span class="logo-text">NetMate</span>
+        <p>Invisible AI for NetAcad Exams.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Product</h4>
+        <a href="/">Home</a>
+        <a href="https://chromewebstore.google.com/detail/netmate/pifapfmbofjgaenkhhipjhfacfmmhkcp">Chrome Extension</a>
+        <a href="/blog">Blog</a>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 NetMate. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

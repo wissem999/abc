@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: 'Inter', sans-serif;
+      background: #0a0a0f;
+      color: #fff;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .logo {
+      width: 28px; height: 28px;
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      border-radius: 8px;
+    }
+    .title { font-size: 18px; font-weight: 800; }
+    .subtitle { font-size: 11px; color: #8888a0; margin-top: 2px; }
+    .status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      background: #1a1a24;
+      border-radius: 10px;
+      margin-bottom: 16px;
+    }
+    .status-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: #00b894;
+      display: inline-block;
+      margin-right: 8px;
+    }
+    .status-dot.off { background: #636e72; }
+    .toggle {
+      width: 44px; height: 24px;
+      background: #2a2a3a;
+      border-radius: 12px;
+      cursor: pointer;
+      position: relative;
+      transition: background 0.3s;
+    }
+    .toggle.on { background: #6c5ce7; }
+    .toggle-knob {
+      width: 20px; height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px; left: 2px;
+      transition: transform 0.3s;
+    }
+    .toggle.on .toggle-knob { transform: translateX(20px); }
+    .mode-section { margin-bottom: 16px; }
+    .mode-label {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8888a0;
+      margin-bottom: 10px;
+    }
+    .mode-btn {
+      display: block;
+      width: 100%;
+      padding: 10px 14px;
+      background: #1a1a24;
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 6px;
+      text-align: left;
+    }
+    .mode-btn.active {
+      border-color: #6c5ce7;
+      background: rgba(108,92,231,0.15);
+    }
+    .mode-desc {
+      font-size: 11px;
+      color: #8888a0;
+      margin-top: 2px;
+    }
+    .footer {
+      text-align: center;
+      padding-top: 12px;
+      border-top: 1px solid #2a2a3a;
+      font-size: 11px;
+      color: #636e72;
+    }
+    .footer a { color: #6c5ce7; text-decoration: none; }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      background: rgba(0,184,148,0.15);
+      color: #00b894;
+      border-radius: 10px;
+      font-size: 10px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo"></div>
+    <div>
+      <div class="title">NetMate</div>
+      <div class="subtitle">AI for NetAcad <span class="badge">ACTIVE</span></div>
+    </div>
+  </div>
+
+  <div class="status-row">
+    <div>
+      <span class="status-dot" id="statusDot"></span>
+      <span id="statusText">Enabled</span>
+    </div>
+    <div class="toggle on" id="toggle" onclick="toggleEnabled()">
+      <div class="toggle-knob"></div>
+    </div>
+  </div>
+
+  <div class="mode-section">
+    <div class="mode-label">Mode</div>
+    <button class="mode-btn active" data-mode="invisible" onclick="setMode('invisible', this)">
+      👁️ Invisible Mode
+      <div class="mode-desc">Completely invisible, even over screenshare</div>
+    </button>
+    <button class="mode-btn" data-mode="sneaky" onclick="setMode('sneaky', this)">
+      🕵️ Sneaky Mode
+      <div class="mode-desc">Small loading indicator for in person exams</div>
+    </button>
+    <button class="mode-btn" data-mode="homework" onclick="setMode('homework', this)">
+      📚 Homework Mode
+      <div class="mode-desc">On screen loading for homework</div>
+    </button>
+  </div>
+
+  <div class="footer">
+    NetMate v4.5 &bull; Click questions to auto-answer &bull; Ctrl+hover for quick select
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
