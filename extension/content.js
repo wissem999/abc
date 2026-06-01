@@ -371,22 +371,30 @@
       if (q.skip || !q.questionElement) return;
       if (processedQE.has(q.questionElement)) return;
       processedQE.add(q.questionElement);
+      let ticking = false;
       q.questionElement.addEventListener('click', () => {
-        if (!enabled) return;
+        if (!enabled || ticking) return;
         const comp = components.find(c => c._id === q.id);
         if (!comp) return;
+        ticking = true;
+
         if (q.questionType === 'basic') {
+          const toClick = [];
           q.inputs.forEach(({ input, label }, i) => {
             if (!label) return;
             const shouldSelect = comp._items[i] && comp._items[i]._shouldBeSelected;
-            if (input.checked !== shouldSelect) label.click();
+            if (input.checked !== shouldSelect) toClick.push(label);
           });
+          toClick.forEach(l => l.click());
         } else if (q.questionType === 'match') {
+          const toClick = [];
           q.inputs.forEach(pair => {
-            if (pair[0]) pair[0].click();
-            if (pair[1]) pair[1].click();
+            if (pair[0]) { toClick.push(pair[0]); toClick.push(pair[1]); }
           });
+          toClick.forEach(el => el.click());
         }
+
+        setTimeout(() => { ticking = false; }, 100);
       });
     });
   }
@@ -400,20 +408,28 @@
         q.inputs.forEach(({ input, label }, i) => {
           if (!label || processedLabels.has(label)) return;
           processedLabels.add(label);
+          let hovering = false;
           label.addEventListener('mouseover', e => {
-            if (!e.ctrlKey || !enabled) return;
+            if (!e.ctrlKey || !enabled || hovering) return;
             const shouldSelect = comp._items[i] && comp._items[i]._shouldBeSelected;
-            if (input.checked !== shouldSelect) label.click();
+            if (input.checked !== shouldSelect) {
+              hovering = true;
+              label.click();
+              setTimeout(() => { hovering = false; }, 100);
+            }
           });
         });
       } else if (q.questionType === 'match') {
         q.inputs.forEach(pair => {
           if (!pair[0] || processedMatchPairs.has(pair[0])) return;
           processedMatchPairs.add(pair[0]);
+          let matching = false;
           pair[0].addEventListener('mouseover', e => {
-            if (!e.ctrlKey || !enabled) return;
+            if (!e.ctrlKey || !enabled || matching) return;
+            matching = true;
             pair[0].click();
             pair[1].click();
+            setTimeout(() => { matching = false; }, 100);
           });
         });
       }
