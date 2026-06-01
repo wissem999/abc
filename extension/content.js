@@ -69,11 +69,15 @@
     return el;
   }
 
+  const selStyle = document.createElement('style');
+  selStyle.textContent = '* { user-select: text !important; -webkit-user-select: text !important; }';
+  document.head.appendChild(selStyle);
+
   function enableTextSelectionRecursive(doc) {
     if (!doc) return;
     doc = doc || document;
-    const stop = (e) => e.stopImmediatePropagation();
-    ['selectstart','contextmenu','mousedown','mouseup','mousemove','blur','focus','selectionchange','copy','cut','paste']
+    const stop = (e) => { e.stopPropagation(); };
+    ['selectstart', 'copy', 'cut', 'paste']
       .forEach(ev => doc.addEventListener(ev, stop, true));
     const iframes = doc.querySelectorAll('iframe');
     for (const f of iframes) {

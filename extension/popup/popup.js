@@ -13,7 +13,7 @@ function toggleEnabled() {
   setUIEnabled(isOn);
   chrome.storage.sync.set({ enabled: isOn });
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    chrome.tabs.sendMessage(tabs[0].id, { type: 'TOGGLE', enabled: isOn });
+    if (tabs[0]) chrome.tabs.sendMessage(tabs[0].id, { type: 'TOGGLE', enabled: isOn }).catch(() => {});
   });
 }
 
@@ -37,7 +37,7 @@ function setMode(mode, btn) {
   btn.classList.add('active');
   chrome.storage.sync.set({ mode });
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    chrome.tabs.sendMessage(tabs[0].id, { type: 'SET_MODE', mode });
+    if (tabs[0]) chrome.tabs.sendMessage(tabs[0].id, { type: 'SET_MODE', mode }).catch(() => {});
   });
 }
 
