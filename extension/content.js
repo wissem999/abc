@@ -377,10 +377,9 @@
         if (!comp) return;
         if (q.questionType === 'basic') {
           q.inputs.forEach(({ input, label }, i) => {
-            if (input.checked && label) label.click();
-            if (comp._items[i] && comp._items[i]._shouldBeSelected && label) {
-              setTimeout(() => label.click(), 10);
-            }
+            if (!label) return;
+            const shouldSelect = comp._items[i] && comp._items[i]._shouldBeSelected;
+            if (input.checked !== shouldSelect) label.click();
           });
         } else if (q.questionType === 'match') {
           q.inputs.forEach(pair => {
@@ -403,10 +402,8 @@
           processedLabels.add(label);
           label.addEventListener('mouseover', e => {
             if (!e.ctrlKey || !enabled) return;
-            if (input.checked) label.click();
-            if (comp._items[i] && comp._items[i]._shouldBeSelected) {
-              setTimeout(() => label.click(), 10);
-            }
+            const shouldSelect = comp._items[i] && comp._items[i]._shouldBeSelected;
+            if (input.checked !== shouldSelect) label.click();
           });
         });
       } else if (q.questionType === 'match') {
